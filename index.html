@@ -47,7 +47,7 @@
                 <label for="name" class="f6 b db mb2 fl ttu">👤 Instagram Username</label>
                 <!-- <span class="normal black-60">(optional)</span> -->
                 <input id="name" class="input-reset ba br2 b--black-20 pa2 mb2 db w-100 h3" type="text" placeholder="Enter @Username Here" aria-describedby="name-desc">
-                <a class="f6 link dim br2 mb2 dib white bg-green w-100 pa2" href="#0">Start Growing 📈</a>
+                <a id="name-link" class="f6 link dim br2 mb2 dib white bg-green w-100 pa2" href="#">Start Growing 📈</a>
                 <small id="name-desc" class="f6 black-60 db mb2">🔒 We will never sell or share your email</small>
               </div>
             </form>
@@ -270,6 +270,22 @@
 </footer>
   <!-- <script src="js/app.js" type="text/javascript"></script> -->
   <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var $name = document.getElementById("name");
+      var $nameLink = document.getElementById("name-link");
+      $nameLink.onclick = function(e) {
+        e.preventDefault();
+
+        var val = $name.value;
+
+        if($name.value.indexOf("@") === 0) {
+          val = val.slice(1);
+        }
+
+        window.location.href = "https://dashboard.followmill.com/" + val;
+      }
+    });
+
   function dataWord () {
 
       $("[data-words]").attr("data-words", function(i, d){
